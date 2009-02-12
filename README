@@ -1,0 +1,79 @@
+= jruby-quartz
+
+== Instructions
+
+Requires the following jars in your application container
+
+commons-collections-3.2.x.jar
+commons-logging.jar
+log4j.jar
+quartz-1.6.x.jar
+
+If you are running a current version of JBoss you already have these!
+If you are running an alternative container you will need to check it's lib
+directory for the presence of these jars.
+
+If you need these jars you can find them within the apache commons project and
+the quartz jar on opensymphony
+
+== Installation
+
+  gem install git://github.com/techwhizbang/jruby-quartz.git
+
+== Usage
+
+The best way to leverage jruby-quartz is to simply extend the BaseScheduler and
+implement any number of jobs you need to run.
+
+For example all you need to do is specify some basic attributes including the
+cron expression representing the frequency of the job(s) you want to with it:
+
+class IntegrationScheduler < BaseScheduler
+
+  private
+
+  def initialize
+    super
+    @base_jobs_group = "IntegrationJobs"
+    @base_triggers_group = "IntegrationTriggers"
+    @cron_expression = "0 0/1 * * * ?"
+  end
+end
+
+Then just extend the base job by putting all of the work you want to perform inside the
+perform_job method.
+
+class IntegrationJob < Jobs::BaseJob
+
+  def perform_job
+    worker_one = mock('worker class one', :whatever => "123")
+    worker_two = mock('worker class two', :whatever => '123')
+  end
+end
+
+If you are running Rails you can throw the schedule! method into a custom initializer.
+An example of this would be like so:
+Notice the Rails.env /container/, I defined custom environments that only run when
+inside a Java container so that the schedule! method doesn't get fired off during
+testing. 
+
+****If you don't do this the schedule! method is fired off a Quartz thread pool
+is spun up.****
+
+if RUBY_PLATFORM =~ /java/ && Rails.env =~ /container/
+
+  CustomerLoadScheduler.instance.schedule!(Jobs::CustomerLoadJob)
+  LoggerOneScheduler.instance.schedule!(Jobs::LoggerOneJob)
+  LoggerTwoScheduler.instance.schedule!(Jobs::LoggerTwoJob)
+
+end
+
+If you are planning on using this with a Rails stack, I would recommend using this
+only with Rails 2.2 or higher because thread safety == 1 runtime
+
+1 runtime means your schedule initializer is only called once.
+
+=== Other
+
+Problems, comments, and suggestions all welcome. nick@controlaltcreate.com or visit my blog
+http://techwhizbang.com
