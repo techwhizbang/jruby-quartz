@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
   s.rdoc_options << '--title' << 'Jruby-Quartz' << '--main' << 'README' << '--line-numbers'
 
   s.autorequire = 'jruby-quartz'
-  s.files = ['{lib,test}/**/*.rb', 'LICENSE', 'README', 'Rakefile'].to_a
+  s.files = ['lib/**/*.rb', 'test/**/*.rb', 'LICENSE', 'README', 'Rakefile'].to_a
   s.test_file = "test/all_tests.rb"
 end
