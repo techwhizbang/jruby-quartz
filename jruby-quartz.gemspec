@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.rdoc_options << '--title' << 'Jruby-Quartz' << '--main' << 'README' << '--line-numbers'
 
   s.autorequire = 'jruby-quartz'
-  s.files = ['base_scheduler.rb',
-             'jruby-quartz.rb',
+  s.files = ['lib/base_scheduler.rb',
+             'lib/jruby-quartz.rb',
              'lib/jobs/base_job.rb',
              'lib/jobs/base_job_detail.rb',
              'lib/jobs/base_job_factory.rb',
