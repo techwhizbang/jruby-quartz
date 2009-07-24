@@ -17,7 +17,9 @@ module Jobs
       end
     end
 
-    def perform_job; end
+    def perform_job
+      raise "Subclass must implement the perform job method"
+    end
 
   end
 

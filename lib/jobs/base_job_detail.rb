@@ -13,6 +13,13 @@ module Jobs
       @job = job
     end
 
+    def validate
+      raise org.quartz.SchedulerException.new("Job's name cannot be null",
+        org.quartz.SchedulerException.ERR_CLIENT_ERROR) if get_name == nil
+      raise org.quartz.SchedulerException.new("Job's group cannot be null",
+        org.quartz.SchedulerException.ERR_CLIENT_ERROR) if get_group == nil
+    end
+
   end
 end
 

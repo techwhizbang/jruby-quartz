@@ -16,7 +16,7 @@ class BaseScheduler
   attr_accessor :job_name, :trigger_name, :cron_expression
 
   def fire!(job_class, options={})
-    raise Exception.new("Not implemented yet")
+    raise "Not implemented yet"
   end
 
   def schedule!(job_class, options={})
