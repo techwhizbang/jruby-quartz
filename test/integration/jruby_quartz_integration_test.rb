@@ -2,13 +2,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 class IntegrationScheduler < BaseScheduler
 
-  private
-
-  def initialize
+  def initialize(cron_expression)
     super
+    @job_name = "IntegrationJob"
+    @trigger_name = "IntegrationTrigger"
     @base_jobs_group = "IntegrationJobs"
     @base_triggers_group = "IntegrationTriggers"
-    @cron_expression = "0 0/1 * * * ?"
+    @cron_expression = cron_expression
   end
 end
 
@@ -23,6 +23,8 @@ end
 class JrubyQuartzIntegrationTest < Test::Unit::TestCase
 
   def test_scheduler_implementation
+    integration_scheduler = IntegrationScheduler.new "0 0/1 * * * ?"
+
     #must stub the scheduler and scheduler factory to avoid invokation of real Quartz thread pool, etc.
     scheduler = mock('scheduler')
     scheduler_factory = mock('scheduler factory', :get_scheduler => scheduler)
@@ -30,7 +32,7 @@ class JrubyQuartzIntegrationTest < Test::Unit::TestCase
     scheduler.expects(:schedule_job)
     scheduler.expects(:set_job_factory)
     
-    IntegrationScheduler.instance.expects(:scheduler_factory).returns(scheduler_factory)
-    IntegrationScheduler.instance.schedule!(IntegrationJob)
+    integration_scheduler.expects(:scheduler_factory).returns(scheduler_factory)
+    integration_scheduler.schedule!(IntegrationJob)
   end
 end

@@ -1,5 +1,3 @@
-require 'singleton'
-
 import org.quartz.SchedulerFactory
 import org.quartz.SchedulerException
 import org.quartz.Scheduler
@@ -9,11 +7,19 @@ import org.quartz.SimpleTrigger
 import org.quartz.impl.StdSchedulerFactory
 
 class BaseScheduler
-  include Singleton
   attr_reader :scheduler_factory
 
   attr_accessor :base_jobs_group, :base_triggers_group
   attr_accessor :job_name, :trigger_name, :cron_expression
+  
+  def initialize(cron_expression)
+    @scheduler_factory = initialize_scheduler_factory
+    @base_jobs_group = "BaseJobsGroup"
+    @base_triggers_group = "BaseTriggersGroup"
+    @job_name = "BaseJob"
+    @trigger_name = "BaseTrigger"
+    @cron_expression = cron_expression
+  end
 
   def fire!(job_class, options={})
     raise "Not implemented yet"
@@ -21,7 +27,7 @@ class BaseScheduler
 
   def schedule!(job_class, options={})
     begin
-      scheduler = self.scheduler_factory.get_scheduler
+      scheduler = scheduler_factory.get_scheduler
       scheduler.set_job_factory(job_factory.new)
       detail = job_detail.new(self.job_name,
                               self.base_jobs_group,
@@ -60,18 +66,6 @@ class BaseScheduler
 
   def cron_trigger
     CronTrigger
-  end
-
-  private
-
-  def initialize
-    super
-    @scheduler_factory = initialize_scheduler_factory
-    @base_jobs_group = "BaseJobsGroup"
-    @base_triggers_group = "BaseTriggersGroup"
-    @job_name = "BaseJob"
-    @trigger_name = "BaseTrigger"
-    @cron_expression = "0 0/1 * * * ?"
   end
 
   class SchedulerError < StandardError; end

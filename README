@@ -2,7 +2,7 @@
 
 == Instructions
 
-Requires the following jars in your application container
+Requires the following jars in your application container and if running with just jruby place these in your $JRUBY_HOME/lib
 
 commons-collections-3.2.x.jar
 commons-logging.jar
@@ -30,13 +30,11 @@ cron expression representing the frequency of the job(s) you want to with it:
 
 class IntegrationScheduler < BaseScheduler
 
-  private
-
-  def initialize
+  def initialize(cron_expression)
     super
+    @cron_expression = cron_expression
     @base_jobs_group = "IntegrationJobs"
     @base_triggers_group = "IntegrationTriggers"
-    @cron_expression = "0 0/1 * * * ?"
   end
 end
 
@@ -57,14 +55,11 @@ Notice the Rails.env /container/, I defined custom environments that only run wh
 inside a Java container so that the schedule! method doesn't get fired off during
 testing. 
 
-****If you don't do this the schedule! method is fired off a Quartz thread pool
-is spun up.****
 
-if RUBY_PLATFORM =~ /java/ && Rails.env =~ /container/
+if RUBY_PLATFORM =~ /java/
 
-  CustomerLoadScheduler.instance.schedule!(Jobs::CustomerLoadJob)
-  LoggerOneScheduler.instance.schedule!(Jobs::LoggerOneJob)
-  LoggerTwoScheduler.instance.schedule!(Jobs::LoggerTwoJob)
+  LoggerOneScheduler.new("0 0/1 * * * ?").schedule!(Jobs::LoggerOneJob)
+  LoggerTwoScheduler.new("0 0/2 * * * ?").schedule!(Jobs::LoggerTwoJob)
 
 end
 
@@ -75,5 +70,5 @@ only with Rails 2.2 or higher because thread safety == 1 runtime
 
 === Other
 
-Problems, comments, and suggestions all welcome. nick@controlaltcreate.com or visit my blog
+Problems, comments, and suggestions all welcome. techwhizbang@gmail.com or visit my blog
 http://techwhizbang.com
