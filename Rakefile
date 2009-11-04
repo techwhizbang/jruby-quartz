@@ -20,7 +20,7 @@ end
 specification = Gem::Specification.new do |s|
 	s.name   = "jruby-quartz"
   s.summary = "Jruby-Quartz is a wrapper library for the Java based Quartz scheduling framework."
-	s.version = "0.1"
+	s.version = "1.1"
 	s.author = 'Nick Zalabak'
 	s.description = "Jruby-Quartz is a wrapper library for the Java based Quartz scheduling framework."
 	s.email = 'nick@controlaltcreate.com'
