@@ -1,5 +1,5 @@
-import org.quartz.JobDetail
-import org.quartz.SchedulerException
+java_import org.quartz.JobDetail
+java_import org.quartz.SchedulerException
 
 module Jobs
   class BaseJobDetail < org.quartz.JobDetail

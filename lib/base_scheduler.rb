@@ -1,10 +1,10 @@
-import org.quartz.SchedulerFactory
-import org.quartz.SchedulerException
-import org.quartz.Scheduler
-import org.quartz.JobDetail
-import org.quartz.CronTrigger
-import org.quartz.SimpleTrigger
-import org.quartz.impl.StdSchedulerFactory
+java_import org.quartz.SchedulerFactory
+java_import org.quartz.SchedulerException
+java_import org.quartz.Scheduler
+java_import org.quartz.JobDetail
+java_import org.quartz.CronTrigger
+java_import org.quartz.SimpleTrigger
+java_import org.quartz.impl.StdSchedulerFactory
 
 class BaseScheduler
   attr_reader :scheduler_factory

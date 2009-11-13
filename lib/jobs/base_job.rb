@@ -1,6 +1,6 @@
-import org.quartz.Job
-import org.quartz.JobExecutionContext
-import org.quartz.JobExecutionException
+java_import org.quartz.Job
+java_import org.quartz.JobExecutionContext
+java_import org.quartz.JobExecutionException
 
 module Jobs
   class BaseJob

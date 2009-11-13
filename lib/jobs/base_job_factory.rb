@@ -1,6 +1,6 @@
-import org.quartz.spi.JobFactory
-import org.quartz.spi.TriggerFiredBundle
-import org.quartz.JobDetail
+java_import org.quartz.spi.JobFactory
+java_import org.quartz.spi.TriggerFiredBundle
+java_import org.quartz.JobDetail
 
 module Jobs
   class BaseJobFactory
