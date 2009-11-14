@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.name   = "jruby-quartz"
   s.summary = "A JRuby implementation of the Quartz scheduling framework that makes it easy to integrate into Ruby and Rails based projects."
-  s.version = "1.1"
+  s.version = "1.2"
   s.author = 'Nick Zalabak'
   s.description = "Jruby-Quartz is a wrapper library for the Java based Quartz scheduling framework."
   s.email = 'techwhizbang@gmail.com'
