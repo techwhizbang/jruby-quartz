@@ -25,6 +25,10 @@ Gem::Specification.new do |s|
              'test/unit/base_scheduler_test.rb',
              'test/all_tests.rb',
              'test/test_helper.rb',
+             'java/commons-collections-3.2.1.jar',
+             'java/commons-logging.jar',
+             'java/log4j.jar',
+             'java/quartz-1.6.4.jar',
              'LICENSE', 
              'README', 
              'Rakefile'].to_a
