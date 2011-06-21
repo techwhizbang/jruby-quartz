@@ -1,42 +1,23 @@
-require 'rubygems'
-require 'rake/gempackagetask'
+require 'bundler'
+Bundler::GemHelper.install_tasks
+require 'rspec/core/rake_task'
 require 'rake/rdoctask'
 
-task :default => :test
-
-task :test do
-  require File.dirname(__FILE__) + '/test/all_tests.rb'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
 end
+
+RSpec::Core::RakeTask.new(:rcov) do |spec|
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
+end
+
+task :default => :spec
 
 desc 'Generate RDoc'
-Rake::RDocTask.new do |task|
-  task.main = 'README'
-  task.title = 'jruby-quartz'
-  task.rdoc_dir = 'doc'
-  task.options << "--line-numbers" << "--inline-source"
-  task.rdoc_files.include('README', 'lib/**/*.rb')
-end
-
-specification = Gem::Specification.new do |s|
-	s.name   = "jruby-quartz"
-  s.summary = "Jruby-Quartz is a wrapper library for the Java based Quartz scheduling framework."
-	s.version = "1.2"
-	s.author = 'Nick Zalabak'
-	s.description = "Jruby-Quartz is a wrapper library for the Java based Quartz scheduling framework."
-	s.email = 'techwhizbang@gmail.com'
-  s.homepage = 'http://techwhizbang.com'
-  s.rubyforge_project = 'Jruby-Quartz'
-
-  s.has_rdoc = true
-  s.extra_rdoc_files = ['README']
-  s.rdoc_options << '--title' << 'Jruby-Quartz' << '--main' << 'README' << '--line-numbers'
-
-  s.autorequire = 'jruby-quartz'
-  s.files = FileList['{lib,test}/**/*.rb', 'LICENSE', 'README', 'Rakefile'].to_a
-	s.test_file = "test/all_tests.rb"
-end
-
-Rake::GemPackageTask.new(specification) do |package|
-  package.need_zip = false
-  package.need_tar = false
+Rake::RDocTask.new do |rdoc|
+  version = JRubyQuartz::VERSION
+  task.title = "jruby-quartz #{version}"
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.rdoc_files.include('README*', 'lib/**/*.rb')
 end

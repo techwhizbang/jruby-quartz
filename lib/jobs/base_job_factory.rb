@@ -1,12 +1,10 @@
-java_import org.quartz.spi.JobFactory
-java_import org.quartz.spi.TriggerFiredBundle
-java_import org.quartz.JobDetail
+java_import org.quartz.JobBuilder
 
-module Jobs
-  class BaseJobFactory
+module JobScheduler
+  class JobBuilder
     include org.quartz.spi.JobFactory
 
-    def new_job bundle
+    def initialize(job_class)
       bundle.get_job_detail.job
     end
   end

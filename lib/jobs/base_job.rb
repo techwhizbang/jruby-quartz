@@ -2,23 +2,22 @@ java_import org.quartz.Job
 java_import org.quartz.JobExecutionContext
 java_import org.quartz.JobExecutionException
 
-module Jobs
-  class BaseJob
+module JobScheduler
+  class SimpleJob
     include org.quartz.Job
-    implement org.quartz.Job
 
     def initialize(); end
 
     def execute(context)
       begin
-        perform_job
+        execute_task
       rescue Exception => e
         raise JobError.new(e)
       end
     end
 
-    def perform_job
-      raise "Subclass must implement the perform job method"
+    def execute_task
+      raise "Subclass must implement the execute_task method"
     end
 
   end

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="RVM: jruby-1.5.6" jdkType="JRUBY_SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.1.2, RVM: jruby-1.5.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mocha (v0.9.12, RVM: jruby-1.5.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.0.14, RVM: jruby-1.5.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v2.6.0, RVM: jruby-1.5.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-core (v2.6.3, RVM: jruby-1.5.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec (v2.6.0, RVM: jruby-1.5.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v2.6.0, RVM: jruby-1.5.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v0.8.7, RVM: jruby-1.5.6) [gem]" level="application" />
+  </component>
+</module>
+
