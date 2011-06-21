@@ -1,0 +1,18 @@
+ERROR main org.jruby.RubyObject - test%ERROR main org.jruby.RubyObject - testing 1%ERROR main org.jruby.RubyObject - testing 2%INFO main org.jruby.RubyObject - info testing 2%INFO main org.jruby.RubyObject - info testing 2%nERROR main org.jruby.RubyObject - testing 2%nERROR main org.jruby.RubyObject - testing 2
+ERROR main org.jruby.RubyObject - testing 3
+ERROR main org.jruby.RubyObject - testing 4
+0    [main] ERROR org.jruby.RubyObject  - testing 4
+2562 [main] ERROR org.jruby.RubyObject  - testing 3
+6299 [main] ERROR org.jruby.RubyObject  - testing 2
+9623 [main] ERROR org.jruby.RubyObject  - testing 7
+2011-06-12 22:54:21,823 [main] ERROR org.jruby.RubyObject  - testing 2
+2011-06-12 22:54:26,805 [main] ERROR org.jruby.RubyObject  - testing 3
+2011-06-12 22:56:08,245 [main] INFO  org.jruby.RubyClass  - string log
+2011-06-12 22:57:04,021 [main] ERROR java.lang.String  - hi
+2011-06-12 23:00:26,497 [main] INFO  org.jruby.RubyClass  - simple job
+2011-06-12 23:21:28,413 [main] INFO  org.jruby.RubyClass  - testing
+2011-06-12 23:28:15,694 [main] INFO  SimpleJob  - testing
+2011-06-12 23:28:17,171 [main] INFO  SimpleJob  - testing
+2011-06-12 23:28:17,826 [main] INFO  SimpleJob  - testing
+2011-06-12 23:28:18,661 [main] INFO  SimpleJob  - testing
+2011-06-15 21:54:24,211 [main] INFO  SimpleJob  - testing

@@ -1,0 +1,28 @@
+PATH
+  remote: .
+  specs:
+    jruby-quartz (2.0-java)
+      rake (= 0.8.7)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    diff-lcs (1.1.2)
+    mocha (0.9.12)
+    rake (0.8.7)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.3)
+    rspec-expectations (2.6.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  jruby-quartz!
+  mocha (= 0.9.12)
+  rspec (= 2.6.0)
